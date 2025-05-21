@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Monthly Income vs Expense{% endblock %}
+
+{% block content %}
+<h1>Monthly Income vs Expense</h1>
+<div class="card">
+    <div class="card-header bg-success text-white">Monthly Income</div>
+    <div class="card-body p-0">
+        <table class="table table-striped m-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Month</th>
+                    <th>Income</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in income %}
+                <tr>
+                    <td>{{ entry['_id'] }}</td>
+                    <td>₹{{ "{:,.2f}".format(entry['total']) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div style="flex: 1;">
+        <h2>Monthly Expenses</h2>
+        <table>
+            <thead>
+                <tr><th>Month</th><th>Expense</th></tr>
+            </thead>
+            <tbody>
+                {% if expenses|length > 0 %}
+                    {% for entry in expenses %}
+                        <tr>
+                            <td>{{ entry['_id'] }}</td>
+                            <td>₹{{ "{:,.2f}".format(entry['total']) }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr><td colspan="2">No expenses data available</td></tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <a href="/">Go Back</a>
+    </div>
+</div>
+{% endblock %}

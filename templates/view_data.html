@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Monthly Income vs Expense{% endblock %}
+
+{% block content %}
+<h1>Monthly Income vs Expense</h1>
+<div style="display: flex; flex-wrap: wrap; gap: 2em;">
+    <div style="flex: 1;">
+    <h1>View {{ collection_name }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <td>{{ item['date'] }}</td>
+                <td>{{ item['amount'] }}</td>
+                <td>{{ item['category'] }}</td>
+                <td>{{ item['description'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="/">Go Back</a>
+</div>
+{% endblock %}

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Finance Tracker{% endblock %}</title>
+
+  <!-- Optional Bootstrap (uncomment if you want it) -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" /> -->
+
+  <style>
+    :root {
+      --primary: #007bff;
+      --primary-dark: #0056b3;
+      --bg: #f8f9fa;
+      --text: #212529;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    nav {
+      background-color: var(--primary);
+      padding: 1em 2em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #e2e6ea;
+    }
+
+    .container {
+      margin: 2.5em auto;
+      padding: 2em;
+      background-color: var(--card-bg);
+      max-width: 960px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5em 0;
+    }
+
+    th, td {
+      padding: 0.85em;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    /* Form Container & Inputs */
+    .form-container {
+      max-width: 480px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .form-container h2 {
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--primary-dark);
+    }
+
+    .form-container label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="number"],
+    .form-container input[type="date"],
+    .form-container select {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 1.25rem;
+      border: 1.8px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-container input[type="text"]:focus,
+    .form-container input[type="number"]:focus,
+    .form-container input[type="date"]:focus,
+    .form-container select:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 5px var(--primary);
+    }
+
+    .form-container button[type="submit"] {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: var(--primary);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-container button[type="submit"]:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* Consistent Go Back Button Container */
+    .back-button-container {
+      max-width: 480px;       /* same as form width */
+      margin: 2rem auto 0;    /* space above, auto left/right centers it */
+      text-align: center;     /* center button horizontally */
+      clear: both;            /* clear any floats above */
+      padding-top: 1rem;
+    }
+
+    .back-button-container a {
+      display: inline-block;
+      background: #eee;
+      color: var(--primary);
+      padding: 0.5rem 1.3rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.8px solid var(--primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .back-button-container a:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Optional existing btn-link class */
+    .btn-link {
+      display: inline-block;
+      margin: 1.5em auto 0;
+      padding: 0.5em 1em;
+      text-decoration: none;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .btn-link:hover {
+      background-color: var(--primary);
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .container {
+        padding: 1em;
+      }
+
+      th, td {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+
+  {% block extra_styles %}{% endblock %}
+</head>
+
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/monthly_income_expense">Monthly Overview</a>
+    <a href="/monthly_spending">Monthly Spending</a>
+    <a href="/yearly_spending_analysis">Yearly Analysis</a>
+    <a href="/view_data/income">View Income</a>
+    <a href="/view_data/expense">View Expenses</a>
+  </nav>
+
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

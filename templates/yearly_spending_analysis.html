@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Monthly Income vs Expense{% endblock %}
+
+{% block content %}
+<h1>Monthly Income vs Expense</h1>
+<div style="display: flex; flex-wrap: wrap; gap: 2em;">
+    <div style="flex: 1;">
+        <h1>Yearly Spending Analysis for {{ year }}</h1>
+        
+        <h2>Total Income by Category</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Total Income</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category, income in income_by_category.items() %}
+                <tr>
+                    <td>{{ category }}</td>
+                    <td>₹{{ "{:,.2f}".format(income) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Total Expenses by Category</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Total Expenses</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category, expense in expense_by_category.items() %}
+                <tr>
+                    <td>{{ category }}</td>
+                    <td>₹{{ "{:,.2f}".format(expense) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/">Go Back</a>
+    </div>
+</div>
+{% endblock %}

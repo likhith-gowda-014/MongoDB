@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Add Income{% endblock %}
+
+{% block content %}
+  <h1 style="text-align: center; margin-bottom: 1.5rem;">Add Income</h1>
+
+  <div style="
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  ">
+    <form action="/add_income" method="post" style="display: flex; flex-direction: column; gap: 1rem;">
+      <label for="date" style="display: flex; flex-direction: column; text-align: left;">
+        Date:
+        <input type="date" id="date" name="date" required
+          style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; width: 100%;">
+      </label>
+
+      <label for="amount" style="display: flex; flex-direction: column; text-align: left;">
+        Amount:
+        <input type="number" id="amount" name="amount" step="0.01" required
+          style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; width: 100%;">
+      </label>
+
+      <label for="category" style="display: flex; flex-direction: column; text-align: left;">
+        Category:
+        <input type="text" id="category" name="category" required
+          style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; width: 100%;">
+      </label>
+
+      <label for="description" style="display: flex; flex-direction: column; text-align: left;">
+        Description:
+        <input type="text" id="description" name="description"
+          style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; width: 100%;">
+      </label>
+
+      <button type="submit" style="
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      "
+      onmouseover="this.style.backgroundColor='#0056b3';"
+      onmouseout="this.style.backgroundColor='#007bff';"
+      >Add Income</button>
+    </form>
+
+    <a href="/" style="
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #007bff;
+      font-size: 16px;
+      text-align: center;
+      transition: color 0.3s ease;
+    "
+    onmouseover="this.style.color='#0056b3';"
+    onmouseout="this.style.color='#007bff';"
+    >Go Back</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Monthly Income vs Expense{% endblock %}
+
+{% block content %}
+  <h1 style="text-align: center; margin-bottom: 1.5rem;">Monthly Income vs Expense</h1>
+
+  <div style="
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+  ">
+    <a href="/add_income" style="
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      text-decoration: none;
+      color: #007bff;
+      border: 1px solid #007bff;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    "
+    onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#fff';"
+    onmouseout="this.style.backgroundColor=''; this.style.color='#007bff';"
+    >Add Income</a>
+
+    <a href="/add_expense" style="
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      text-decoration: none;
+      color: #007bff;
+      border: 1px solid #007bff;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    "
+    onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#fff';"
+    onmouseout="this.style.backgroundColor=''; this.style.color='#007bff';"
+    >Add Expense</a>
+
+    <a href="/view/Income" style="
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      text-decoration: none;
+      color: #007bff;
+      border: 1px solid #007bff;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    "
+    onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#fff';"
+    onmouseout="this.style.backgroundColor=''; this.style.color='#007bff';"
+    >View Income</a>
+
+    <a href="/view/Expense" style="
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      text-decoration: none;
+      color: #007bff;
+      border: 1px solid #007bff;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    "
+    onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#fff';"
+    onmouseout="this.style.backgroundColor=''; this.style.color='#007bff';"
+    >View Expense</a>
+
+    <a href="/analysis" style="
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      text-decoration: none;
+      color: #007bff;
+      border: 1px solid #007bff;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    "
+    onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#fff';"
+    onmouseout="this.style.backgroundColor=''; this.style.color='#007bff';"
+    >Analysis</a>
+  </div>
+{% endblock %}

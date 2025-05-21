@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Monthly Income vs Expense{% endblock %}
+
+{% block content %}
+<h1>Monthly Income vs Expense</h1>
+<div style="display: flex; flex-wrap: wrap; gap: 2em;">
+    <div style="flex: 1;">
+        <h1>Monthly Spending Analysis</h1>
+        <div class="form-container">
+            <form method="post" action="/monthly_spending" class="mb-4">
+                <div class="input-group">
+                    <label class="input-group-text" for="month">Select Month</label>
+                    <input type="month" id="month" name="month" value="{{ '{:04d}-{:02d}'.format(year, month) }}" class="form-control" required>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <h2>Expenses</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in expenses_list %}
+                    <tr>
+                        <td>{{ item['_id'] }}</td>
+                        <td>₹{{ "{:,.2f}".format(item['total']) }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="2">No data available</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/">Go Back</a>
+    </div>
+</div>
+{% endblock %}
